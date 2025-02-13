@@ -84,6 +84,28 @@ function averageWeeklyTemperature(heights: Temp[]) {
   return r / 7;
 }
 
+class TemperatureMeasurement {
+  constructor(
+    public city: string,
+    public measurementDate: Date,
+    public temperature: number
+  ) {}
+}
+function averageWeeklyTemperature(temperatures: TemperatureMeasurement[]) {
+  let totalTemperature = 0;
+  const oneWeekAgo = 604800000;
+
+  for (let i = 0; i < temperatures.length; i++) {
+    if (temperatures[i].city === "Stockholm") {
+      if (temperatures[i].measurementDate.getTime() > Date.now() - oneWeekAgo) {
+        totalTemperature += temperatures[i].temperature;
+      }
+    }
+  }
+
+  return totalTemperature / 7;
+}
+
 /*
     4. Följande funktion kommer att presentera ett objekt i dom:en. 
     Se om du kan göra det bättre. Inte bara presentationen räknas, även strukturer.
