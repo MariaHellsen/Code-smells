@@ -66,23 +66,23 @@ const getStudentStatus = (student: Student): string =>
     Det finns flera code smells att identifiera här. Vissa är lurigare än andra.
     */
 
-class Temp {
-  constructor(public q: string, public where: Date, public v: number) {}
-}
+// class Temp {
+//   constructor(public q: string, public where: Date, public v: number) {}
+// }
 
-function averageWeeklyTemperature(heights: Temp[]) {
-  let r = 0;
+// function averageWeeklyTemperature(heights: Temp[]) {
+//   let r = 0;
 
-  for (let who = 0; who < heights.length; who++) {
-    if (heights[who].q === "Stockholm") {
-      if (heights[who].where.getTime() > Date.now() - 604800000) {
-        r += heights[who].v;
-      }
-    }
-  }
+//   for (let who = 0; who < heights.length; who++) {
+//     if (heights[who].q === "Stockholm") {
+//       if (heights[who].where.getTime() > Date.now() - 604800000) {
+//         r += heights[who].v;
+//       }
+//     }
+//   }
 
-  return r / 7;
-}
+//   return r / 7;
+// }
 
 class TemperatureMeasurement {
   constructor(
@@ -111,26 +111,38 @@ function averageWeeklyTemperature(temperatures: TemperatureMeasurement[]) {
     Se om du kan göra det bättre. Inte bara presentationen räknas, även strukturer.
     */
 
+// function showProduct(
+//   name: string,
+//   price: number,
+//   amount: number,
+//   description: string,
+//   image: string,
+//   parent: HTMLElement
+// ) {
+//   let container = document.createElement("div");
+//   let title = document.createElement("h4");
+//   let pris = document.createElement("strong");
+//   let imageTag = document.createElement("img");
+
+//   title.innerHTML = name;
+//   pris.innerHTML = price.toString();
+//   imageTag.src = image;
+
+//   container.appendChild(title);
+//   container.appendChild(imageTag);
+//   container.appendChild(pris);
+//   parent.appendChild(container);
+// }
+
 function showProduct(
   name: string,
   price: number,
-  amount: number,
-  description: string,
   image: string,
   parent: HTMLElement
 ) {
   let container = document.createElement("div");
-  let title = document.createElement("h4");
-  let pris = document.createElement("strong");
-  let imageTag = document.createElement("img");
+  container.innerHTML = `<h4>${name}</h4><img src="${image}"><strong>${price}</strong>`;
 
-  title.innerHTML = name;
-  pris.innerHTML = price.toString();
-  imageTag.src = image;
-
-  container.appendChild(title);
-  container.appendChild(imageTag);
-  container.appendChild(pris);
   parent.appendChild(container);
 }
 
