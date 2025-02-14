@@ -215,23 +215,58 @@ const concatenateStrings = () =>
       fler och fler parametrar behöver läggas till? T.ex. avatar eller adress. Hitta en bättre
       lösning som är hållbar och skalar bättre. 
   */
-function createUser(
-  name: string,
-  birthday: Date,
-  email: string,
-  password: string
-) {
-  // Validation
+// function createUser(
+//   name: string,
+//   birthday: Date,
+//   email: string,
+//   password: string
+// ) {
+//   // Validation
 
-  let ageDiff = Date.now() - birthday.getTime();
-  let ageDate = new Date(ageDiff);
-  let userAge = Math.abs(ageDate.getUTCFullYear() - 1970);
+//   let ageDiff = Date.now() - birthday.getTime();
+//   let ageDate = new Date(ageDiff);
+//   let userAge = Math.abs(ageDate.getUTCFullYear() - 1970);
 
-  console.log(userAge);
+//   console.log(userAge);
 
-  if (!(userAge < 20)) {
-    // Logik för att skapa en användare
-  } else {
-    return "Du är under 20 år";
-  }
+//   if (!(userAge < 20)) {
+//     // Logik för att skapa en användare
+//   } else {
+//     return "Du är under 20 år";
+//   }
+// }
+
+// function createUser(
+//   name: string,
+//   birthday: Date,
+//   email: string,
+//   password: string
+// ) {
+//   const userAge = new Date().getFullYear() - birthday.getFullYear();
+
+//   if (userAge < 20) return "Du är under 20 år";
+
+//   console.log(userAge);
+
+//   // Logik för att skapa en användare
+//   return "Användare skapad!";
+// }
+
+interface UserData {
+  name: string;
+  birthday: Date;
+  email: string;
+  password: string;
+  avatar?: string;
+  address?: string;
+}
+
+function createUser(user: UserData) {
+  const userAge = new Date().getFullYear() - user.birthday.getFullYear();
+
+  if (userAge < 20) return "Du är under 20 år";
+
+  console.log(`Användaren ${user.name} skapad. Ålder: ${userAge}`);
+
+  return { ...user, createdAt: new Date() };
 }
