@@ -195,16 +195,19 @@ function presentStudents(students: Student[]) {
     Lorem, ipsum, dolor, sit, amet
     Exemplet under löser problemet, men inte speciellt bra. Hur kan man göra istället?
     */
-function concatenateStrings() {
-  let result = "";
-  result += "Lorem";
-  result += "ipsum";
-  result += "dolor";
-  result += "sit";
-  result += "amet";
+// function concatenateStrings() {
+//   let result = "";
+//   result += "Lorem";
+//   result += "ipsum";
+//   result += "dolor";
+//   result += "sit";
+//   result += "amet";
 
-  return result;
-}
+//   return result;
+// }
+
+const concatenateStrings = () =>
+  ["Lorem", "ipsum", "dolor", "sit", "amet"].join("");
 
 /* 
   7. Denna funktion skall kontrollera att en användare är över 20 år och göra någonting.
